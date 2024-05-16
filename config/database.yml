@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: tenant_test_task_development
+
+test:
+  <<: *default
+  database: tenant_test_task_test
+
+production:
+  <<: *default
+  database: tenant_test_task_production
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
