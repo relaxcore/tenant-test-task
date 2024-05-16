@@ -10,32 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_16_191558) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_16_203225) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'tenant_data', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.jsonb 'data', default: {}, null: false
-    t.uuid 'entity_id'
-    t.string 'entity_type'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['entity_id', 'entity_type'], name: 'index_tenant_data_on_entity_id_and_entity_type'
+  create_table "tenant_data", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.jsonb "data", default: {}, null: false
+    t.uuid "entity_id"
+    t.string "entity_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "tenant_id"
+    t.index ["entity_id", "entity_type"], name: "index_tenant_data_on_entity_id_and_entity_type"
+    t.index ["tenant_id"], name: "index_tenant_data_on_tenant_id"
   end
 
-  create_table 'tenants', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.jsonb 'data_structure', default: {}, null: false
-    t.jsonb 'select_options', default: {}, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "tenants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.jsonb "data_structure", default: {}, null: false
+    t.jsonb "select_options", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.string 'auth_token'
-    t.string 'username'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['auth_token'], name: 'index_users_on_auth_token'
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "auth_token"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["auth_token"], name: "index_users_on_auth_token"
   end
 
+  add_foreign_key "tenant_data", "tenants"
 end
