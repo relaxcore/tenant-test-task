@@ -4,13 +4,13 @@ user = User.create(username: 'User', auth_token: 'token')
 
 tenant = Tenant.create(
   data_structure: {
-    'First name' => Tenant::STRING,
+    'First name' => Tenant::STRING_REQUIRED,
     'Last name' => Tenant::STRING,
-    'Phone number' => Tenant::NUMBER,
+    'Phone number' => Tenant::NUMBER_REQUIRED,
     'Year of birth' => Tenant::NUMBER,
-    'Gender' => Tenant::SINGLE_SELECT,
+    'Gender' => Tenant::SINGLE_SELECT_REQUIRED,
     'Preferable type of work' => Tenant::SINGLE_SELECT,
-    'Skills' => Tenant::MULTI_SELECT,
+    'Skills' => Tenant::MULTI_SELECT_REQUIRED,
     'Hobbies' => Tenant::MULTI_SELECT
   },
   select_options: {

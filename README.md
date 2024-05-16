@@ -1,21 +1,34 @@
 ## Test task
 
+List of available data types:
+* string
+* string_required
+* number
+* number_required
+* single_select
+* single_select_required
+* multi_select
+* multi_select_required
+
 Example of `data_structure` attribute:
 ```
   {
-    'Name' => 'string',
-    'Age' => 'number',
-    'Phone number' => 'number',
-    'Question #1' => 'single_select',
-    'Question #2' => 'multi_select'
+    'First name' => 'string_required',
+    'Last name' => 'string',
+    'Phone number' => 'number_required',
+    'Year of birth' => 'number',
+    'Gender' => 'single_select_required',
+    'Preferable type of work' => 'single_select',
+    'Skills' => 'multi_select_required',
+    'Hobbies' => 'multi_select'
   }
 ```
 
 Example of `select_options` attribute:
 ```
 {
-  'Question #1' => ['option1', 'option2', 'option3'],
-  'Question #2' => ['option1', 'option2', 'option3', 'option4', 'option5']
+  'Gender' => 'Male',
+  'Skills' => ['Ruby', 'Elixir', 'SQL']
 }
 ```
 
