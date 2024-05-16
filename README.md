@@ -7,7 +7,7 @@ Example of `data_structure` attribute:
     'Age' => 'number',
     'Phone number' => 'number',
     'Question #1' => 'single_select',
-    'Question #2' => 'multiple_select'
+    'Question #2' => 'multi_select'
   }
 ```
 
