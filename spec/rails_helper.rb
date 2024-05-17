@@ -4,6 +4,7 @@ require File.expand_path('../config/environment', __dir__)
 require 'spec_helper'
 require 'rspec/rails'
 require 'factory_bot_rails'
+require 'shoulda/matchers'
 
 Rails.application.load_tasks
 
@@ -26,4 +27,11 @@ RSpec.configure do |config|
   end
 
   config.include FactoryBot::Syntax::Methods
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end

@@ -18,4 +18,5 @@ end
 group :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '>= 6.0.1'
+  gem 'shoulda-matchers'
 end
