@@ -83,17 +83,17 @@ module TenantServices
     end
 
     def validate_single_select(field_name, value)
-      possible_options = tenant.select_options[field_name]
-      return if possible_options.include?(value)
+      options = tenant.select_options[field_name]
+      return if options.include?(value)
 
-      errors << I18n.t('validations.data.invalid_single_select', options: possible_options.join(', '))
+      errors << I18n.t('validations.data.invalid_single_select', options: options.join(', '), field: field_name)
     end
 
     def validate_multi_select(field_name, value)
-      possible_options = tenant.select_options[field_name]
-      return if (value - possible_options).blank?
+      options = tenant.select_options[field_name]
+      return if (value - options).blank?
 
-      errors << I18n.t('validations.data.invalid_multi_select', options: possible_options.join(', '))
+      errors << I18n.t('validations.data.invalid_multi_select', options: options.join(', '), field: field_name)
     end
 
     def tenant

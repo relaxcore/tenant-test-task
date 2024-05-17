@@ -9,5 +9,5 @@ en:
       required_field: "Data must contain field '%{field}' with type '%{type}'"
       invalid_string: "Data field '%{field}' must be a string"
       invalid_number: "Data field '%{field}' must be a number"
-      invalid_single_select: "Invalid selection: must be one of '%{options}'"
-      invalid_multi_select: "Invalid selection: must be one or more of '%{options}'"
+      invalid_single_select: "Invalid selection in field '%{field}': must be one of '%{options}'"
+      invalid_multi_select: "Invalid selection in field '%{field}': must be one or more of '%{options}'"
