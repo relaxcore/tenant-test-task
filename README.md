@@ -70,6 +70,7 @@ Do an PUT HTTP request to `localhost:3000/users` with `Authorization` header as 
   }
 }
 ```
+In case when the `Authorization` header is missed or it has the invalid value `401` status will be returned
 
 ## Response example
 ```
@@ -130,5 +131,61 @@ Do an PUT HTTP request to `localhost:3000/users` with `Authorization` header as 
             "Home"
         ]
     }
+}
+```
+
+## Validation errors
+Once the body data is not valid - one of these validation errors would appear with `422` status code
+
+1. When the `tenant_id` param is missing
+```
+{
+    "errors": [
+        "Tenant ID can't be blank"
+    ]
+}
+```
+2. When the `tenant_id` param is invalid
+```
+{
+    "errors": [
+        "Tenant ID is invalid"
+    ]
+}
+```
+3. When the `data[...]` param is missing
+```
+{
+    "errors": [
+        "Data can't be blank"
+    ]
+}
+```
+4. When the data contains fields other that tenant has
+```
+{
+    "errors": [
+        "Data contains invalid fields: 'test, test1'"
+    ]
+}
+```
+5. When the required fields are missing
+```
+{
+    "errors": [
+        "Data must contain field 'Skills' with type 'multi_select'",
+        "Data must contain field 'First name' with type 'string'"
+    ]
+}
+```
+6. When the fields has invalid data type or invalid selection values
+```
+{
+    "errors": [
+        "Data field 'First name' must be a string",
+        "Invalid selection in field 'Gender': must be one of 'Male, Female'",
+        "Invalid selection in field 'Skills': must be one or more of 'Ruby, Python, JavaScript, Java, Elixir, SQL, Go, Rust'",
+        "Data field 'Phone number' must be a number"
+    ]
 }
 ```
