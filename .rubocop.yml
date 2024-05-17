@@ -24,3 +24,5 @@ Style/HashSyntax:
   Enabled: false
 Style/NumericLiterals:
   Enabled: false
+Rails/SkipsModelValidations:
+  Enabled: false

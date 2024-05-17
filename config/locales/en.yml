@@ -1,2 +1,13 @@
 en:
-  hello: "Hello world"
+  validations:
+    tenant:
+      cant_be_blank: Tenant ID can't be blank
+      invalid: Tenant ID is invalid
+    data:
+      cant_be_blank: Data can't be blank
+      invalid_keys: "Data contains invalid fields: '%{fields}'"
+      required_field: "Data must contain field '%{field}' with type '%{type}'"
+      invalid_string: "Data field '%{field}' must be a string"
+      invalid_number: "Data field '%{field}' must be a number"
+      invalid_single_select: "Invalid selection: must be one of '%{options}'"
+      invalid_multi_select: "Invalid selection: must be one or more of '%{options}'"

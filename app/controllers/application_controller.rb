@@ -5,6 +5,10 @@ class ApplicationController < ActionController::API
 
   private
 
+  def render_validation_errors(errors)
+    render json: { errors: errors }, status: :unprocessable_entity
+  end
+
   def authenticate_user
     user = User.find_by(auth_token: authorization_header)
 
