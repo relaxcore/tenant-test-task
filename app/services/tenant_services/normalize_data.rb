@@ -12,6 +12,8 @@ module TenantServices
     end
 
     def call
+      return if tenant.blank?
+
       data.to_unsafe_h.each_with_object({}) do |(field_name, value), normalized_data|
         normalized_data[field_name] = case tenant.data_structure[field_name]
                                       when /multi_select/

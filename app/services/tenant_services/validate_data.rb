@@ -23,7 +23,14 @@ module TenantServices
     attr_reader :data, :tenant_id, :errors
 
     def validate_tenant
+      validate_tenant_id || validate_tenant_presence
+    end
+
+    def validate_tenant_id
       errors << I18n.t('validations.tenant.cant_be_blank') if tenant_id.blank?
+    end
+
+    def validate_tenant_presence
       errors << I18n.t('validations.tenant.invalid') if tenant_id.present? && tenant.blank?
     end
 
