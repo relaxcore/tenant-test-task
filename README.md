@@ -53,7 +53,11 @@ rails db:seed
 ```
 bundle install
 ```
-5. Boot up a server
+5. Run the rspec tests to double-check everything is ok
+```
+bundle exec rspec
+```
+6. Boot up a server
 ```
 rails s
 ```
