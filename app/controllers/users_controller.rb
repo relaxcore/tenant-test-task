@@ -6,9 +6,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    params_hash = params.to_unsafe_h
+
     result = ::UserServices::UpdateUserTenantData.call(
-      data: params['data'],
-      tenant_id: params['tenant_id']
+      data: params_hash['data'],
+      tenant_id: params_hash['tenant_id']
     )
 
     return render_validation_errors(result.errors) if result.errors.any?

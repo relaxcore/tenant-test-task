@@ -7,7 +7,7 @@ module UserServices
     end
 
     def initialize(tenant_id:, data: {})
-      @data = data
+      @data = data || {}
       @tenant_id = tenant_id
     end
 
