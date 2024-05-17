@@ -29,7 +29,7 @@ Example of `data_structure` attribute:
 Example of `select_options` attribute:
 ```
 {
-  'Gender' => 'Male',
+  'Gender' => ['Male', 'Female'],
   'Skills' => ['Ruby', 'Elixir', 'SQL']
 }
 ```
