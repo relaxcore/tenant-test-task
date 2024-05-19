@@ -12,7 +12,7 @@ module UserServices
     end
 
     def call
-      Result.new(errors: errors, tenant_data: tenant_data)
+      Result.new(errors: errors, tenant_data: updated_tenant_data)
     end
 
     private
@@ -26,7 +26,7 @@ module UserServices
       @errors ||= ::TenantServices::ValidateData.call(tenant_id: tenant_id, data: normalized_data)
     end
 
-    def tenant_data
+    def updated_tenant_data
       return if errors.any?
 
       object = TenantDatum.find_or_initialize_by(tenant: tenant, entity: Current.user)
