@@ -1,4 +1,5 @@
-## Test task
+## Tenant test task
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/relaxcore/tenant-test-task/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/relaxcore/tenant-test-task/tree/main)
 
 List of available data types:
 * string
