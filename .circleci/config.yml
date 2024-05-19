@@ -1,0 +1,44 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@2.0.1
+jobs:
+  rspec:
+    docker:
+      - image: cimg/ruby:3.3.1-node
+        environment:
+          RAILS_ENV: test
+      - image: circleci/postgres:13.5
+        environment:
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_USER: circleci
+    environment:
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rake db:test:prepare
+      - run:
+          name: RSpec
+          command: bundle exec rspec
+  rubocop:
+    docker:
+      - image: cimg/ruby:3.3.1-node
+    environment:
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+
+workflows:
+  build-and-test:
+    jobs:
+      - rspec
+      - rubocop

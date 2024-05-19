@@ -10,6 +10,10 @@ development:
 test:
   <<: *default
   database: tenant_test_task_test
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] || 'postgres://localhost'  %>
+  host: localhost
 
 production:
   <<: *default
